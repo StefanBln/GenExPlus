@@ -1,14 +1,13 @@
 package io.github.stefanbln.genexplus.report.e2e;
 
 import com.icegreen.greenmail.junit5.GreenMailExtension;
-import com.icegreen.greenmail.util.ServerSetupTest;
+import io.github.stefanbln.genexplus.report.GreenMailTestSupport;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
 import java.nio.file.Path;
-import java.util.Map;
 
 import static io.github.stefanbln.genexplus.report.e2e.E2eTestSupport.assertScenario;
 import static io.github.stefanbln.genexplus.report.e2e.E2eTestSupport.defaultE2eProperties;
@@ -23,21 +22,15 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class E2eEmailCliTest {
 
     @RegisterExtension
-    static final GreenMailExtension GREEN_MAIL = new GreenMailExtension(ServerSetupTest.SMTP);
+    static final GreenMailExtension GREEN_MAIL = GreenMailTestSupport.extension();
 
     private Path properties;
 
     @BeforeEach
     void setUp() throws Exception {
         GREEN_MAIL.reset();
-        properties = writePropertiesWithOverrides(defaultE2eProperties(), Map.of(
-                "mail.smtp.enabled", "true",
-                "mail.smtp.host", "127.0.0.1",
-                "mail.smtp.port", String.valueOf(GREEN_MAIL.getSmtp().getPort()),
-                "mail.smtp.from", "sender@example.com",
-                "mail.smtp.auth", "false",
-                "mail.smtp.starttls.enable", "false"
-        ));
+        properties = writePropertiesWithOverrides(
+                defaultE2eProperties(), GreenMailTestSupport.smtpProperties(GREEN_MAIL));
     }
 
     @Test

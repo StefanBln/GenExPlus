@@ -1,5 +1,6 @@
 package io.github.stefanbln.genexplus.report.delivery;
 
+import io.github.stefanbln.genexplus.report.GreenMailTestSupport;
 import io.github.stefanbln.genexplus.report.config.Configuration;
 import com.icegreen.greenmail.junit5.GreenMailExtension;
 import com.icegreen.greenmail.util.GreenMailUtil;
@@ -23,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class EmailDeliveryIntegrationTest {
 
     @RegisterExtension
-    static final GreenMailExtension GREEN_MAIL = new GreenMailExtension(ServerSetupTest.SMTP);
+    static final GreenMailExtension GREEN_MAIL = GreenMailTestSupport.extension();
 
     private Configuration configuration;
 
@@ -31,12 +32,7 @@ class EmailDeliveryIntegrationTest {
     void setUp() throws IOException {
         GREEN_MAIL.reset();
         configuration = new Configuration("");
-        configuration.setProperty("mail.smtp.enabled", "true");
-        configuration.setProperty("mail.smtp.host", "127.0.0.1");
-        configuration.setProperty("mail.smtp.port", String.valueOf(GREEN_MAIL.getSmtp().getPort()));
-        configuration.setProperty("mail.smtp.from", "sender@example.com");
-        configuration.setProperty("mail.smtp.auth", "false");
-        configuration.setProperty("mail.smtp.starttls.enable", "false");
+        GreenMailTestSupport.smtpProperties(GREEN_MAIL).forEach(configuration::setProperty);
     }
 
     @Test

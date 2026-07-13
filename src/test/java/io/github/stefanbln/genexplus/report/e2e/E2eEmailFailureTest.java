@@ -26,7 +26,10 @@ class E2eEmailFailureTest {
                 "mail.smtp.port", "1",
                 "mail.smtp.from", "sender@example.com",
                 "mail.smtp.auth", "false",
-                "mail.smtp.starttls.enable", "false"
+                "mail.smtp.starttls.enable", "false",
+                "mail.smtp.retry.count", "0",
+                "mail.smtp.connectiontimeout", "2000",
+                "mail.smtp.timeout", "2000"
         ));
 
         var scenario = emailFailureScenario();

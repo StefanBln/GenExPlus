@@ -225,7 +225,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.5.4</version>
                 <configuration>
-                    <excludedGroups>integration</excludedGroups>
+                    <excludedGroups>integration,e2e</excludedGroups>
                     <argLine>-Djava.awt.headless=true</argLine>
                 </configuration>
             </plugin>
@@ -361,7 +361,7 @@
                         <configuration>
                             <excludedGroups combine.self="override"/>
                             <groups>integration</groups>
-                            <argLine>-Djava.awt.headless=true</argLine>
+                            <argLine>-Djava.awt.headless=true -Dgreenmail.startup.timeout=10000</argLine>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -377,7 +377,7 @@
                         <configuration>
                             <excludedGroups combine.self="override"/>
                             <groups>e2e</groups>
-                            <argLine>-Djava.awt.headless=true</argLine>
+                            <argLine>-Djava.awt.headless=true -Dgreenmail.startup.timeout=10000</argLine>
                         </configuration>
                     </plugin>
                 </plugins>
