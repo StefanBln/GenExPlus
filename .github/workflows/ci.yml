@@ -40,16 +40,6 @@ jobs:
           --health-timeout 5s
           --health-retries 10
 
-    env:
-      REPORT_DB1_URL: jdbc:postgresql://localhost:5432/postgres
-      REPORT_DB1_USERNAME: postgres
-      REPORT_DB1_PASSWORD: postgres
-      REPORT_DB1_DRIVER: org.postgresql.Driver
-      REPORT_DB2_URL: jdbc:mysql://localhost:3306/genexplus_test
-      REPORT_DB2_USERNAME: genexplus
-      REPORT_DB2_PASSWORD: genexplus
-      REPORT_DB2_DRIVER: com.mysql.cj.jdbc.Driver
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -66,9 +56,27 @@ jobs:
 
       - name: Run integration tests
         run: mvn -B test --settings .mvn/settings-ci.xml -Pintegration-tests
+        env:
+          REPORT_DB1_URL: jdbc:postgresql://localhost:5432/postgres
+          REPORT_DB1_USERNAME: postgres
+          REPORT_DB1_PASSWORD: postgres
+          REPORT_DB1_DRIVER: org.postgresql.Driver
+          REPORT_DB2_URL: jdbc:mysql://localhost:3306/genexplus_test
+          REPORT_DB2_USERNAME: genexplus
+          REPORT_DB2_PASSWORD: genexplus
+          REPORT_DB2_DRIVER: com.mysql.cj.jdbc.Driver
 
       - name: Run E2E scenarios
         run: mvn -B test --settings .mvn/settings-ci.xml -Pe2e
+        env:
+          REPORT_DB1_URL: jdbc:postgresql://localhost:5432/postgres
+          REPORT_DB1_USERNAME: postgres
+          REPORT_DB1_PASSWORD: postgres
+          REPORT_DB1_DRIVER: org.postgresql.Driver
+          REPORT_DB2_URL: jdbc:mysql://localhost:3306/genexplus_test
+          REPORT_DB2_USERNAME: genexplus
+          REPORT_DB2_PASSWORD: genexplus
+          REPORT_DB2_DRIVER: com.mysql.cj.jdbc.Driver
 
       - name: Compile with optional JDBC drivers
         run: |
