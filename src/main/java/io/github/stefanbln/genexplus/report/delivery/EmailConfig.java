@@ -31,6 +31,8 @@ import java.util.Properties;
  *   <li>{@code mail.smtp.connectiontimeout}, {@code mail.smtp.timeout}
  *       (default: {@value #DEFAULT_SMTP_TIMEOUT_MS} ms)</li>
  *   <li>{@code mail.smtp.logo.resource} — optional classpath image for HTML emails</li>
+ *   <li>{@code mail.smtp.ssl.trust} — trust host(s) for implicit SSL / STARTTLS (e.g. internal CA)</li>
+ *   <li>{@code mail.smtp.ssl.checkserveridentity} — hostname verification (default: {@code true})</li>
  * </ul>
  */
 public final class EmailConfig {
@@ -68,13 +70,15 @@ public final class EmailConfig {
     private final int timeout;
     private final boolean debugEnabled;
     private final String logoResource;
+    private final String sslTrust;
+    private final boolean sslCheckServerIdentity;
 
     private EmailConfig(String smtpHost, int smtpPort, String fromAddress,
                        String username, String password, boolean authEnabled,
                        boolean startTlsEnabled, boolean startTlsRequired, boolean sslEnabled,
                        int retryCount, int retryDelayMs, long maxAttachmentBytes,
                        int connectionTimeout, int timeout, boolean debugEnabled,
-                       String logoResource) {
+                       String logoResource, String sslTrust, boolean sslCheckServerIdentity) {
         this.smtpHost = Objects.requireNonNull(smtpHost, "SMTP host cannot be null");
         this.smtpPort = smtpPort;
         this.fromAddress = Objects.requireNonNull(fromAddress, "From address cannot be null");
@@ -91,6 +95,8 @@ public final class EmailConfig {
         this.timeout = timeout;
         this.debugEnabled = debugEnabled;
         this.logoResource = logoResource;
+        this.sslTrust = sslTrust;
+        this.sslCheckServerIdentity = sslCheckServerIdentity;
     }
 
     /**
@@ -131,11 +137,13 @@ public final class EmailConfig {
         var timeout = configuration.getInt("mail.smtp.timeout", DEFAULT_SMTP_TIMEOUT_MS);
         var debugEnabled = configuration.getBoolean("mail.smtp.debug", false);
         var logoResource = configuration.getString("mail.smtp.logo.resource");
+        var sslTrust = configuration.getString("mail.smtp.ssl.trust");
+        var sslCheckServerIdentity = configuration.getBoolean("mail.smtp.ssl.checkserveridentity", true);
 
         return new EmailConfig(host, port, fromAddress, username, password,
                 authEnabled, startTlsEnabled, startTlsRequired, sslEnabled,
                 retryCount, retryDelayMs, maxAttachmentBytes,
-                connectionTimeout, timeout, debugEnabled, logoResource);
+                connectionTimeout, timeout, debugEnabled, logoResource, sslTrust, sslCheckServerIdentity);
     }
 
     /**
@@ -199,6 +207,10 @@ public final class EmailConfig {
             props.put("mail.smtp.socketFactory.port", String.valueOf(smtpPort));
             props.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
             props.put("mail.smtp.socketFactory.fallback", "false");
+            if (sslTrust != null && !sslTrust.isBlank()) {
+                props.put("mail.smtp.ssl.trust", sslTrust);
+            }
+            props.put("mail.smtp.ssl.checkserveridentity", String.valueOf(sslCheckServerIdentity));
         }
 
         if (debugEnabled) {

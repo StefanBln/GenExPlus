@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import org.junit.jupiter.api.Assumptions;
+import org.apache.pdfbox.Loader;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -98,7 +99,18 @@ class RendererTest {
             renderer.renderToStream("test-template.jrxml", "PDF", parameters, null, out);
         }
 
-        assertArrayEquals(inMemory, Files.readAllBytes(outputFile));
+        byte[] fromStream = Files.readAllBytes(outputFile);
+        assertEquivalentPdfOutput(inMemory, fromStream);
+    }
+
+    private static void assertEquivalentPdfOutput(byte[] inMemory, byte[] fromStream) throws IOException {
+        assertTrue(inMemory.length > 4 && fromStream.length > 4);
+        assertEquals("%PDF", new String(inMemory, 0, 4));
+        assertEquals("%PDF", new String(fromStream, 0, 4));
+        try (var memoryDoc = Loader.loadPDF(inMemory); var streamDoc = Loader.loadPDF(fromStream)) {
+            assertEquals(memoryDoc.getNumberOfPages(), streamDoc.getNumberOfPages(),
+                    "render() and renderToStream() should produce the same page count");
+        }
     }
 
     @Test

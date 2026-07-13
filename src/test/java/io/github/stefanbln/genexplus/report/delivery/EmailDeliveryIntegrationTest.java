@@ -3,8 +3,9 @@ package io.github.stefanbln.genexplus.report.delivery;
 import io.github.stefanbln.genexplus.report.GreenMailTestSupport;
 import io.github.stefanbln.genexplus.report.config.Configuration;
 import com.icegreen.greenmail.junit5.GreenMailExtension;
+import com.icegreen.greenmail.util.GreenMail;
 import com.icegreen.greenmail.util.GreenMailUtil;
-import com.icegreen.greenmail.util.ServerSetupTest;
+import com.icegreen.greenmail.util.ServerSetup;
 import jakarta.mail.internet.MimeMultipart;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Tag;
@@ -138,13 +139,17 @@ class EmailDeliveryIntegrationTest {
 
     @Test
     void sendsViaSmtpsWhenSslEnabled() throws Exception {
-        var smtps = new GreenMailExtension(ServerSetupTest.SMTPS);
-        smtps.start();
+        var smtpsSetup = new ServerSetup(0, "127.0.0.1", ServerSetup.PROTOCOL_SMTPS);
+        var greenMail = new GreenMail(smtpsSetup);
+        greenMail.start();
 
         try {
-            configuration.setProperty("mail.smtp.port", String.valueOf(smtps.getSmtps().getPort()));
+            configuration.setProperty("mail.smtp.port", String.valueOf(greenMail.getSmtps().getPort()));
             configuration.setProperty("mail.smtp.ssl.enable", "true");
             configuration.setProperty("mail.smtp.starttls.enable", "false");
+            configuration.setProperty("mail.smtp.retry.count", "0");
+            configuration.setProperty("mail.smtp.ssl.trust", "127.0.0.1");
+            configuration.setProperty("mail.smtp.ssl.checkserveridentity", "false");
 
             var emailService = new EmailDeliveryService(EmailConfig.from(configuration));
             var message = EmailMessage.builder()
@@ -154,10 +159,10 @@ class EmailDeliveryIntegrationTest {
                     .build();
 
             emailService.send(message);
-            assertEquals(1, smtps.getReceivedMessages().length);
-            assertEquals("SMTPS Report", smtps.getReceivedMessages()[0].getSubject());
+            assertEquals(1, greenMail.getReceivedMessages().length);
+            assertEquals("SMTPS Report", greenMail.getReceivedMessages()[0].getSubject());
         } finally {
-            smtps.stop();
+            greenMail.stop();
         }
     }
 }
