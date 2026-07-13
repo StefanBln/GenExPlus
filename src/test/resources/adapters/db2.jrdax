@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
+  <name>db2</name>
+  <driver>com.mysql.cj.jdbc.Driver</driver>
+  <url>jdbc:mysql://localhost:3306/genexplus_test</url>
+  <username>genexplus</username>
+  <password>genexplus</password>
+</jdbcDataAdapter>

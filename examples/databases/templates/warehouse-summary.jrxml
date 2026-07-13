@@ -1,0 +1,28 @@
+<!-- Studio: create data adapter named db1. GenExPlus runtime uses database.id=db1. -->
+<jasperReport name="WarehouseSummary" language="java" pageWidth="595" pageHeight="842"
+              whenNoDataType="AllSectionsNoDetail" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="a1a1a1a1-b2b2-c3c3-d4d4-e5e5e5e5e5e5">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="db1"/>
+    <parameter name="ReportTitle" class="java.lang.String"/>
+    <parameter name="Author" class="java.lang.String"/>
+    <query language="SQL"><![CDATA[SELECT current_database() AS warehouse, CURRENT_DATE AS run_date;]]></query>
+    <field name="warehouse" class="java.lang.String"/>
+    <field name="run_date" class="java.sql.Date"/>
+    <title height="50">
+        <element kind="textField" x="0" y="10" width="555" height="30" fontSize="16.0" bold="true"
+                 hTextAlign="Center" vTextAlign="Middle">
+            <expression><![CDATA[$P{ReportTitle}]]></expression>
+        </element>
+    </title>
+    <detail>
+        <band height="60">
+            <element kind="textField" x="0" y="10" width="555" height="25" hTextAlign="Center">
+                <expression><![CDATA["Database: " + $F{warehouse}]]></expression>
+            </element>
+            <element kind="textField" x="0" y="35" width="555" height="20" hTextAlign="Center">
+                <expression><![CDATA["Author: " + $P{Author}]]></expression>
+            </element>
+        </band>
+    </detail>
+</jasperReport>

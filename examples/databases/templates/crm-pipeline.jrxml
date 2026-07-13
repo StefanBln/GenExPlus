@@ -1,0 +1,28 @@
+<!-- Studio: create data adapter named db2. GenExPlus runtime uses database.id=db2. -->
+<jasperReport name="CrmPipeline" language="java" pageWidth="595" pageHeight="842"
+              whenNoDataType="AllSectionsNoDetail" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="b2b2b2b2-c3c3-d4d4-e5e5-f6f6f6f6f6f6">
+    <property name="com.jaspersoft.studio.data.defaultdataadapter" value="db2"/>
+    <parameter name="ReportTitle" class="java.lang.String"/>
+    <parameter name="Author" class="java.lang.String"/>
+    <query language="SQL"><![CDATA[SELECT DATABASE() AS crm_db, CURDATE() AS run_date;]]></query>
+    <field name="crm_db" class="java.lang.String"/>
+    <field name="run_date" class="java.sql.Date"/>
+    <title height="50">
+        <element kind="textField" x="0" y="10" width="555" height="30" fontSize="16.0" bold="true"
+                 hTextAlign="Center" vTextAlign="Middle">
+            <expression><![CDATA[$P{ReportTitle}]]></expression>
+        </element>
+    </title>
+    <detail>
+        <band height="60">
+            <element kind="textField" x="0" y="10" width="555" height="25" hTextAlign="Center">
+                <expression><![CDATA["Database: " + $F{crm_db}]]></expression>
+            </element>
+            <element kind="textField" x="0" y="35" width="555" height="20" hTextAlign="Center">
+                <expression><![CDATA["Author: " + $P{Author}]]></expression>
+            </element>
+        </band>
+    </detail>
+</jasperReport>

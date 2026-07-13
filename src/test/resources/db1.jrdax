@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- JDBC data adapter for GenExPlus tests and examples (Studio name: db1). -->
+<jdbcDataAdapter class="net.sf.jasperreports.data.jdbc.JdbcDataAdapterImpl">
+  <name>db1</name>
+  <driver>org.postgresql.Driver</driver>
+  <url>jdbc:postgresql://localhost:5433/postgres</url>
+  <username>postgres</username>
+  <password>postgres</password>
+</jdbcDataAdapter>

@@ -1,0 +1,38 @@
+<!-- MySQL variant of test-template.jrxml — defaultdataadapter=db2 for multi-DB E2E scenarios. -->
+<jasperReport name="TestreportMySQL" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="749badca-6876-4061-9973-a895ed28cb5f" ignorePagination="true" titleNewPage="true" summaryNewPage="true">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="db2"/>
+	<parameter name="ReportTitle" forPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA["_not_set_"]]></defaultValueExpression>
+	</parameter>
+	<parameter name="Author" forPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA["_unknown_"]]></defaultValueExpression>
+	</parameter>
+	<query language="SQL"><![CDATA[SELECT DATABASE() as db, CURDATE() as run_date;]]></query>
+	<field name="db" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.name" value="db"/>
+		<property name="com.jaspersoft.studio.field.label" value="db"/>
+	</field>
+	<field name="run_date" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.name" value="run_date"/>
+		<property name="com.jaspersoft.studio.field.label" value="run_date"/>
+	</field>
+	<title height="79" splitType="Stretch">
+		<element kind="staticText" uuid="d425ef00-9a32-49f2-a081-cbe67648a30b" x="406" y="29" width="139" height="30" bold="true" hTextAlign="Center" vTextAlign="Middle">
+			<text><![CDATA[GenExPlus MySQL Test]]></text>
+		</element>
+	</title>
+	<detail>
+		<band height="125" splitType="Stretch">
+			<element kind="textField" uuid="db34762c-c830-4a2c-90a1-c143120c1b68" x="180" y="10" width="200" height="30" forecolor="#5CB8E6" fontName="Serif" fontSize="14.0" underline="true" hTextAlign="Center" vTextAlign="Middle">
+				<expression><![CDATA[$P{ReportTitle}]]></expression>
+			</element>
+			<element kind="textField" uuid="51eb9d93-b882-40cd-b07b-4c844276637b" x="0" y="86" width="278" height="30">
+				<expression><![CDATA[$F{db}]]></expression>
+			</element>
+			<element kind="textField" uuid="5256b0f1-232b-4430-8468-476a0d51ae54" x="278" y="86" width="277" height="30">
+				<expression><![CDATA[$F{run_date}]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

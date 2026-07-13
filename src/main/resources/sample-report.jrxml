@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Sample JasperReports template bundled with GenExPlus for quick-start runs without a database. -->
+<jasperReport name="GenExPlusSample" language="java" pageWidth="595" pageHeight="842"
+              whenNoDataType="AllSectionsNoDetail" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567890">
+    <parameter name="ReportTitle" class="java.lang.String">
+        <defaultValueExpression><![CDATA["GenExPlus Sample Report"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="Author" class="java.lang.String">
+        <defaultValueExpression><![CDATA["GenExPlus"]]></defaultValueExpression>
+    </parameter>
+    <title height="60">
+        <element kind="staticText" x="0" y="10" width="555" height="40"
+                 fontSize="18.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+            <text><![CDATA[GenExPlus Sample Report]]></text>
+        </element>
+    </title>
+    <detail>
+        <band height="80">
+            <element kind="textField" x="0" y="10" width="555" height="30"
+                     fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+                <expression><![CDATA[$P{ReportTitle}]]></expression>
+            </element>
+            <element kind="textField" x="0" y="45" width="555" height="25"
+                     hTextAlign="Center" vTextAlign="Middle">
+                <expression><![CDATA["Created by: " + $P{Author}]]></expression>
+            </element>
+        </band>
+    </detail>
+    <pageFooter height="30">
+        <element kind="textField" x="355" y="0" width="200" height="25"
+                 pattern="MMMM d, yyyy" hTextAlign="Right" vTextAlign="Middle">
+            <expression><![CDATA[new java.util.Date()]]></expression>
+        </element>
+    </pageFooter>
+</jasperReport>

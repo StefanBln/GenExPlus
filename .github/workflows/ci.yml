@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+      mysql:
+        image: mysql:8.4
+        env:
+          MYSQL_ROOT_PASSWORD: genexplus
+          MYSQL_DATABASE: genexplus_test
+          MYSQL_USER: genexplus
+          MYSQL_PASSWORD: genexplus
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd "mysqladmin ping -h localhost -ugenexplus -pgenexplus"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 10
+
+    env:
+      REPORT_DB1_URL: jdbc:postgresql://localhost:5432/postgres
+      REPORT_DB1_USERNAME: postgres
+      REPORT_DB1_PASSWORD: postgres
+      REPORT_DB1_DRIVER: org.postgresql.Driver
+      REPORT_DB2_URL: jdbc:mysql://localhost:3306/genexplus_test
+      REPORT_DB2_USERNAME: genexplus
+      REPORT_DB2_PASSWORD: genexplus
+      REPORT_DB2_DRIVER: com.mysql.cj.jdbc.Driver
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Run unit tests
+        run: mvn -B test --settings .mvn/settings-ci.xml
+
+      - name: Run integration tests
+        run: mvn -B test --settings .mvn/settings-ci.xml -Pintegration-tests
+
+      - name: Run E2E scenarios
+        run: mvn -B test --settings .mvn/settings-ci.xml -Pe2e
+
+      - name: Compile with optional JDBC drivers
+        run: |
+          mvn -B -DskipTests compile --settings .mvn/settings-ci.xml -Poracle-jdbc
+          mvn -B -DskipTests compile --settings .mvn/settings-ci.xml -Pdb2-jdbc
+
+      - name: Package and smoke test
+        run: |
+          chmod +x start.sh scripts/smoke-packaged.sh
+          ./scripts/smoke-packaged.sh

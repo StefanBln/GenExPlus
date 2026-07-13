@@ -1,0 +1,16 @@
+<!-- SQL report without defaultdataadapter — used to test unresolved JDBC profile validation. -->
+<jasperReport name="SqlNoAdapter" language="java" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="a1b2c3d4-e5f6-7890-abcd-ef1234567890" ignorePagination="true">
+	<parameter name="ReportTitle" forPrompting="false" class="java.lang.String">
+		<defaultValueExpression><![CDATA["_not_set_"]]></defaultValueExpression>
+	</parameter>
+	<query language="SQL"><![CDATA[SELECT current_database() as db, CURRENT_DATE;]]></query>
+	<field name="db" class="java.lang.String"/>
+	<field name="current_date" class="java.sql.Date"/>
+	<detail>
+		<band height="50">
+			<element kind="textField" x="0" y="0" width="200" height="30">
+				<expression><![CDATA[$F{db}]]></expression>
+			</element>
+		</band>
+	</detail>
+</jasperReport>

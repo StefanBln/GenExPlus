@@ -1,0 +1,17 @@
+# Build output
+target/
+
+# IDE and OS files
+.idea/
+.vscode/
+.DS_Store
+*.iml
+
+# Local test artifacts
+test-output/
+genexplus-output/
+e2e-output/
+
+# Logs
+*.log
+

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Minimal DB-less template for E2E scenarios and quick-start copies (JasperReports 7.x). -->
+<jasperReport name="SimpleReport" language="java" pageWidth="595" pageHeight="842"
+              whenNoDataType="AllSectionsNoDetail" columnWidth="555"
+              leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20"
+              uuid="87654321-4321-4321-4321-210987654321">
+    <parameter name="title" class="java.lang.String">
+        <defaultValueExpression><![CDATA["GenExPlus"]]></defaultValueExpression>
+    </parameter>
+    <parameter name="date" class="java.lang.String">
+        <defaultValueExpression><![CDATA[""]]></defaultValueExpression>
+    </parameter>
+    <title height="100">
+        <element kind="textField" x="0" y="0" width="555" height="40"
+                 fontSize="24.0" bold="true" hTextAlign="Center" vTextAlign="Middle">
+            <expression><![CDATA[$P{title}]]></expression>
+        </element>
+        <element kind="textField" x="0" y="50" width="555" height="20"
+                 fontSize="12.0" hTextAlign="Center" vTextAlign="Middle">
+            <expression><![CDATA[$P{date}]]></expression>
+        </element>
+    </title>
+    <detail>
+        <band height="80">
+            <element kind="staticText" x="0" y="0" width="555" height="30"
+                     fontSize="14.0" hTextAlign="Center" vTextAlign="Middle">
+                <text><![CDATA[GenExPlus E2E quick-start report]]></text>
+            </element>
+        </band>
+    </detail>
+</jasperReport>
