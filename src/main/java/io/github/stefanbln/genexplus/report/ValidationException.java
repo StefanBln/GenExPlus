@@ -1,5 +1,7 @@
 package io.github.stefanbln.genexplus.report;
 
+import java.io.Serial;
+
 /**
  * Indicates invalid user input or report parameters.
  *
@@ -7,11 +9,11 @@ package io.github.stefanbln.genexplus.report;
  */
 public class ValidationException extends RuntimeException {
 
+    @Serial
+    private static final long serialVersionUID = 1_125_008_793_485_507_474L;
+
     public ValidationException(String message) {
         super(message);
     }
 
-    public ValidationException(String message, Throwable cause) {
-        super(message, cause);
-    }
 }

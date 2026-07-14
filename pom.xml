@@ -24,8 +24,8 @@
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>5.9.2</junit.version>
-        <jasperreports.version>7.0.3</jasperreports.version>
+        <junit.version>5.10.0</junit.version>
+        <jasperreports.version>7.0.7</jasperreports.version>
         <!-- Dynamic artifact naming for shell script integration -->
         <artifact.finalName>${project.artifactId}-${project.version}</artifact.finalName>
         <jar.finalName>${project.artifactId}-${project.version}.jar</jar.finalName>
@@ -87,7 +87,7 @@
         <dependency>
             <groupId>commons-io</groupId>
             <artifactId>commons-io</artifactId>
-            <version>2.20.0</version>
+            <version>2.22.0</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/commons-beanutils/commons-beanutils -->
@@ -100,12 +100,12 @@
         <dependency>
             <groupId>com.github.librepdf</groupId>
             <artifactId>openpdf</artifactId>
-            <version>2.2.2</version>
+            <version>2.2.3</version>
         </dependency>
         <dependency>
             <groupId>com.github.librepdf</groupId>
             <artifactId>openpdf-renderer</artifactId>
-            <version>2.2.2</version>
+            <version>2.2.3</version>
         </dependency>
 
         <!-- JUnit 5 for testing -->
@@ -119,7 +119,7 @@
         <dependency>
             <groupId>com.icegreen</groupId>
             <artifactId>greenmail-junit5</artifactId>
-            <version>2.1.2</version>
+            <version>2.1.9</version>
             <scope>test</scope>
         </dependency>
 
@@ -127,32 +127,32 @@
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
-            <version>3.0.5</version>
+            <version>3.0.6</version>
         </dependency>
         <dependency>
             <groupId>org.bouncycastle</groupId>
             <artifactId>bcpkix-jdk18on</artifactId>
-            <version>1.80</version>
+            <version>1.84</version>
         </dependency>
 
         <!-- Email API -->
         <dependency>
             <groupId>jakarta.mail</groupId>
             <artifactId>jakarta.mail-api</artifactId>
-            <version>2.1.3</version>
+            <version>2.1.5</version>
         </dependency>
 
         <!-- Jakarta Mail implementation -->
         <dependency>
             <groupId>org.eclipse.angus</groupId>
             <artifactId>angus-mail</artifactId>
-            <version>2.0.4</version>
+            <version>2.0.5</version>
             <scope>runtime</scope>
         </dependency>
         <dependency>
             <groupId>org.eclipse.angus</groupId>
             <artifactId>angus-activation</artifactId>
-            <version>2.0.2</version>
+            <version>2.0.3</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -160,14 +160,14 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.19.0</version>
+            <version>3.20.0</version>
         </dependency>
 
         <!-- Log4j core pairs with log4j-api pulled in transitively by JasperReports -->
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>2.23.1</version>
+            <version>2.26.1</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -175,7 +175,7 @@
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>42.7.8</version>
+            <version>42.7.13</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -183,7 +183,21 @@
         <dependency>
             <groupId>com.mysql</groupId>
             <artifactId>mysql-connector-j</artifactId>
-            <version>9.3.0</version>
+            <version>9.7.0</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.oracle.database.jdbc</groupId>
+            <artifactId>ojdbc11</artifactId>
+            <version>23.26.2.0.0</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>com.ibm.db2</groupId>
+            <artifactId>jcc</artifactId>
+            <version>12.1.5.0</version>
             <scope>runtime</scope>
         </dependency>
 
@@ -327,30 +341,7 @@
         </plugins>
     </build>
 
-    <!-- Release profile with optimized settings -->
     <profiles>
-        <profile>
-            <id>oracle-jdbc</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.oracle.database.jdbc</groupId>
-                    <artifactId>ojdbc11</artifactId>
-                    <version>23.9.0.25.07</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
-        <profile>
-            <id>db2-jdbc</id>
-            <dependencies>
-                <dependency>
-                    <groupId>com.ibm.db2</groupId>
-                    <artifactId>jcc</artifactId>
-                    <version>12.1.2.0</version>
-                    <scope>runtime</scope>
-                </dependency>
-            </dependencies>
-        </profile>
         <profile>
             <id>integration-tests</id>
             <build>
