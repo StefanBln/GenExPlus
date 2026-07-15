@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Deploy packaged GenExPlus artifacts to a target directory.
 # Usage: ./scripts/deploy.sh [target-dir]
 #

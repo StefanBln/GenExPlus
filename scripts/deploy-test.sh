@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Deploy to a local test directory (no sudo). Usage: ./scripts/deploy-test.sh [target-dir]
 
 set -euo pipefail

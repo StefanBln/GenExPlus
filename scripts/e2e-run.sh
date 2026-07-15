@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Run GenExPlus E2E scenarios manually (same recipes as mvn -Pe2e test).
 # Usage:
 #   ./scripts/e2e-run.sh              # all tier-A scenarios

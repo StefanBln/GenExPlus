@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Stop local test databases started by test-db-up.sh.
 set -euo pipefail
 

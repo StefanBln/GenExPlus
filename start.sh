@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # GenExPlus local run helper.
 # Usage: ./start.sh <report.conf> [application.properties]
 

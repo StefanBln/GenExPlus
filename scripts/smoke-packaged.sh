@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Verifies the packaged GenExPlus layout (JAR + lib/ + additional_resources/) end-to-end.
 set -euo pipefail
 

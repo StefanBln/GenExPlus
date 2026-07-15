@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Regenerate the PKCS#12 test keystore used by PDF signing unit and E2E tests.
 #
 # Creates a self-signed RSA certificate with key usages suitable for PDF CMS signing.

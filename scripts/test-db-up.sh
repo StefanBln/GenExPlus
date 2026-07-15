@@ -1,4 +1,7 @@
 #!/bin/bash
+# Copyright 2026 Stefan Schuetz - Locivera - Berlin
+# SPDX-License-Identifier: Apache-2.0
+
 # Start PostgreSQL + MySQL for local integration/E2E database tests.
 set -euo pipefail
 
