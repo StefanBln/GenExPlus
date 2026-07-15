@@ -8,6 +8,8 @@ Thank you for your interest in **GenExPlus** (Generic Export Plus). This project
 2. Read the [FAQ](docs/FAQ.md) and [How-To guides](docs/HOWTO.md) for operator questions.
 3. For security issues, see [SECURITY.md](SECURITY.md) — do **not** open a public issue for vulnerabilities.
 
+Please read our [Code of Conduct](CODE_OF_CONDUCT.md). We expect everyone participating in issues, discussions, and pull requests to follow it.
+
 ## Development setup
 
 ```bash

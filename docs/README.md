@@ -17,6 +17,7 @@ Use this index to find what you need.
 | [PDF_SIGNING.md](PDF_SIGNING.md) | Operators & security | Cryptographic PDF signing, DocMDP certification, keystores, trust |
 | [CONTRIBUTING.md](../CONTRIBUTING.md) | Contributors | PR workflow, tests, verified commits |
 | [SECURITY.md](../SECURITY.md) | Security | Private vulnerability reporting |
+| [CODE_OF_CONDUCT.md](../CODE_OF_CONDUCT.md) | Everyone | Community standards |
 
 ## How-to guides (quick links)
 

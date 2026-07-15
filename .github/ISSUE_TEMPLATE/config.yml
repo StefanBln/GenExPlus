@@ -6,3 +6,6 @@ contact_links:
   - name: Security issue
     url: https://github.com/StefanBln/GenExPlus/blob/main/SECURITY.md
     about: Report vulnerabilities privately — do not use public issues
+  - name: Code of Conduct concerns
+    url: https://github.com/StefanBln
+    about: Contact @StefanBln privately on GitHub — do not open a public issue

@@ -115,6 +115,7 @@ Walkthrough: **[How-To guides](docs/HOWTO.md)** · Every property: **[Configurat
 | **[E2E scenarios](src/test/resources/e2e/README.md)** | Runnable recipes you can copy |
 | **[Contributing](CONTRIBUTING.md)** | PR workflow, tests, verified commits |
 | **[Security](SECURITY.md)** | Report vulnerabilities privately |
+| **[Code of Conduct](CODE_OF_CONDUCT.md)** | Community standards and reporting |
 
 Generate Java API docs: `mvn javadoc:javadoc` → `target/site/apidocs/`
 
