@@ -62,7 +62,7 @@ java -cp "target/lib/*:target/genexplus-1.0.0-SNAPSHOT.jar:target/additional_res
 ### 2.1 Start local test databases (optional)
 
 ```bash
-./scripts/test-db-up.sh   # PostgreSQL on :5432, MySQL on :3306
+./scripts/test-db-up.sh   # PostgreSQL on :5433 (default), MySQL on :3306
 ```
 
 ### 2.2 Configure `application.properties`
@@ -121,6 +121,9 @@ For SMTPS (port 465):
 ```properties
 mail.smtp.port=465
 mail.smtp.ssl.enable=true
+# Optional — internal CA / self-signed server (lab only):
+# mail.smtp.ssl.trust=smtp.example.com
+# mail.smtp.ssl.checkserveridentity=false
 ```
 
 ### 3.2 Enable email on the job

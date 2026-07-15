@@ -189,7 +189,7 @@ GenExPlus embeds the image with Content-ID `logoGenExPlusReport`. See [HOWTO.md 
 | `mail.smtp.retry.delayMs` | 2000 | Base delay; doubled each retry |
 | `mail.smtp.maxAttachmentBytes` | 25 MiB | Reject oversized attachments |
 
-Use SMTPS (`mail.smtp.ssl.enable=true`) for port 465; STARTTLS is disabled automatically when SSL is on.
+Use SMTPS (`mail.smtp.ssl.enable=true`) for port 465; STARTTLS is disabled automatically when SSL is on. For internal servers with private CAs, set `mail.smtp.ssl.trust` to the host name (or consult your security team before disabling `mail.smtp.ssl.checkserveridentity`).
 
 ---
 

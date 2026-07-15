@@ -113,6 +113,8 @@ Walkthrough: **[How-To guides](docs/HOWTO.md)** · Every property: **[Configurat
 | **[FAQ](docs/FAQ.md)** | Common questions and troubleshooting |
 | **[Configuration](docs/CONFIGURATION.md)** | Complete property reference and exit codes |
 | **[E2E scenarios](src/test/resources/e2e/README.md)** | Runnable recipes you can copy |
+| **[Contributing](CONTRIBUTING.md)** | PR workflow, tests, verified commits |
+| **[Security](SECURITY.md)** | Report vulnerabilities privately |
 
 Generate Java API docs: `mvn javadoc:javadoc` → `target/site/apidocs/`
 
@@ -185,7 +187,7 @@ GenExPlus is open source and open to collaboration. Whether you spotted a bug, h
 
 **Before you open a PR:** `mvn test` should pass; for larger changes, an issue first helps align on direction.
 
-Not sure where to start? Browse [good first issues](https://github.com/StefanBln/GenExPlus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or pick a scenario from the [E2E recipes](src/test/resources/e2e/README.md) and see if you can make it better. All skill levels welcome — thoughtful feedback counts as much as code.
+Not sure where to start? Browse [good first issues](https://github.com/StefanBln/GenExPlus/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22) or pick a scenario from the [E2E recipes](src/test/resources/e2e/README.md) and see if you can make it better. All skill levels welcome — thoughtful feedback counts as much as code. See **[CONTRIBUTING.md](CONTRIBUTING.md)** for setup, tests, and signed commits.
 
 ---
 

@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/StefanBln/GenExPlus/blob/main/docs/README.md
+    about: How-To guides, FAQ, and configuration reference
+  - name: Security issue
+    url: https://github.com/StefanBln/GenExPlus/blob/main/SECURITY.md
+    about: Report vulnerabilities privately — do not use public issues

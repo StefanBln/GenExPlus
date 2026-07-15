@@ -152,7 +152,9 @@ Reference in job file: `database.id=db1`.
 | `mail.smtp.auth` | `true` | Enable SMTP AUTH |
 | `mail.smtp.starttls.enable` | `true` | STARTTLS (forced off when SSL enabled) |
 | `mail.smtp.starttls.required` | `false` | Require STARTTLS |
-| `mail.smtp.ssl.enable` | `false` | SMTPS / implicit SSL |
+| `mail.smtp.ssl.enable` | `false` | SMTPS / implicit SSL (port 465) |
+| `mail.smtp.ssl.trust` | — | Trust host(s) for SSL/TLS (e.g. `smtp.internal` or `*` for lab use only) |
+| `mail.smtp.ssl.checkserveridentity` | `true` | Verify SMTP server hostname against certificate |
 | `mail.smtp.retry.count` | `2` | Retries after first failure |
 | `mail.smtp.retry.delayMs` | `2000` | Initial retry delay (exponential backoff) |
 | `mail.smtp.maxAttachmentBytes` | `26214400` (25 MiB) | Maximum attachment size |

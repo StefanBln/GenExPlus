@@ -1,0 +1,78 @@
+name: Bug report
+description: Something is broken or behaves unexpectedly
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug. Check the [FAQ](https://github.com/StefanBln/GenExPlus/blob/main/docs/FAQ.md) first.
+
+  - type: input
+    id: version
+    attributes:
+      label: GenExPlus version
+      description: Tag, release zip, or commit SHA
+      placeholder: "1.0.1 or bb38047"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - PDF / export
+        - Database / JDBC
+        - Email delivery
+        - PDF signing
+        - Configuration / CLI
+        - Build / CI
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. mvn package
+        2. ./start.sh report.conf
+        3. ...
+    validations:
+      required: true
+
+  - type: input
+    id: exit-code
+    attributes:
+      label: Exit code (if applicable)
+      placeholder: "0-5 — see docs/CONFIGURATION.md#exit-codes"
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behaviour
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / verbose output
+      description: Run with `verbose=true` or `--verbose` when possible
+      render: shell
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      placeholder: |
+        OS, Java version (java -version), database if relevant

@@ -15,7 +15,7 @@ if ! command -v docker >/dev/null 2>&1; then
   exit 1
 fi
 
-echo "Starting test databases (postgres:5432, mysql:3306)..."
+echo "Starting test databases (postgres:${POSTGRES_TEST_PORT:-5433}, mysql:3306)..."
 docker compose -f "$COMPOSE_FILE" up -d --wait
 
 cat <<'EOF'

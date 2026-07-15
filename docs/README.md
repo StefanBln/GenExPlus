@@ -15,6 +15,8 @@ Use this index to find what you need.
 | [FAQ.md](FAQ.md) | Operators & integrators | Answers to frequent questions |
 | [CONFIGURATION.md](CONFIGURATION.md) | Operators | Complete property reference for `.conf` and `application.properties` |
 | [PDF_SIGNING.md](PDF_SIGNING.md) | Operators & security | Cryptographic PDF signing, DocMDP certification, keystores, trust |
+| [CONTRIBUTING.md](../CONTRIBUTING.md) | Contributors | PR workflow, tests, verified commits |
+| [SECURITY.md](../SECURITY.md) | Security | Private vulnerability reporting |
 
 ## How-to guides (quick links)
 

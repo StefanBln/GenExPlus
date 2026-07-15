@@ -6,12 +6,31 @@
 
     <groupId>io.github.stefanbln</groupId>
     <artifactId>genexplus</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>GenExPlus</name>
     <description>JasperReports-based CLI report generator with multi-format export and optional email delivery.</description>
     <url>https://github.com/StefanBln/GenExPlus</url>
+
+    <organization>
+        <name>Locivera</name>
+        <url>https://github.com/StefanBln</url>
+    </organization>
+
+    <developers>
+        <developer>
+            <id>stefan-schuetz</id>
+            <name>Stefan Schuetz</name>
+            <email>schuetz@locivera.com</email>
+            <organization>Locivera</organization>
+            <organizationUrl>https://github.com/StefanBln</organizationUrl>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
 
     <licenses>
         <license>
